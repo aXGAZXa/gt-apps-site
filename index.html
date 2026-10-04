@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GT Apps</title>
+  <meta name="description" content="GT Apps — small, friendly apps from an independent UK developer.">
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .apps { display: grid; gap: 16px; margin-top: 24px; }
+    .app {
+      display: flex; gap: 16px; align-items: center;
+      text-decoration: none; color: inherit;
+      background: var(--paper-soft); border: 1px solid var(--rule);
+      border-radius: 16px; padding: 16px;
+    }
+    .app:hover { border-color: var(--blue-glow); }
+    .app img { width: 72px; height: 72px; border-radius: 16px; flex: none; }
+    .app div { min-width: 0; }
+    .app h3 { margin: 0 0 2px; font-size: 1.15rem; }
+    .app p { margin: 0; color: var(--ink-soft); }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>GT Apps</h1>
+    <p>Small, friendly apps from an independent UK developer.</p>
+  </header>
+
+  <main>
+    <h2>Apps</h2>
+    <div class="apps">
+      <a class="app" href="who-goes-first/index.html">
+        <img src="who-goes-first/icon.png" alt="">
+        <div>
+          <h3>Who Goes First?</h3>
+          <p>A games night spinner that settles who goes first.</p>
+        </div>
+      </a>
+    </div>
+
+    <h2>Contact</h2>
+    <p><a href="mailto:hello@gt-apps.co.uk">hello@gt-apps.co.uk</a></p>
+  </main>
+
+  <footer>GT Apps · United Kingdom</footer>
+</body>
+</html>

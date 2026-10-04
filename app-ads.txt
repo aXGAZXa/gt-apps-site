@@ -1,0 +1,6 @@
+# app-ads.txt for Who Goes First?
+# AdMob gives you the exact line once your account exists
+# (AdMob > Apps > View all apps > app-ads.txt). It looks like:
+#   google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+# Replace the line below with yours and remove the leading '#'.
+# google.com, pub-REPLACE_ME, DIRECT, f08c47fec0942fa0
