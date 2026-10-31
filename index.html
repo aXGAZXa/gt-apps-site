@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GT-Apps · Independent studio for mobile games and apps</title>
   <meta name="description" content="GT-Apps is an independent studio making mobile games and apps.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; font-src 'self'; connect-src 'self' https://forms.gt-apps.co.uk; form-action 'self' mailto:; base-uri 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#1c1d1f">
   <link rel="icon" href="favicon.png">
@@ -127,10 +127,12 @@
             </dl>
           </div>
 
-          <!-- data-endpoint stays empty until a sending service is approved;
-               while it's empty the form opens the visitor's email app (mailto). -->
+          <!-- Sends through the GT-Apps Worker (forms.gt-apps.co.uk, see _docs/contact-form-worker.md)
+               after a Cloudflare Turnstile check. If the Worker or Turnstile can't be reached,
+               or data-endpoint is emptied, the form opens the visitor's email app (mailto). -->
           <form id="contact-form" action="mailto:enquiries@gt-apps.co.uk" method="post" enctype="text/plain"
-                data-endpoint="" data-to="enquiries@gt-apps.co.uk" aria-describedby="form-privacy">
+                data-endpoint="https://forms.gt-apps.co.uk/contact" data-turnstile-sitekey="0x4AAAAAAFuPnLl-wGleRh63"
+                data-to="enquiries@gt-apps.co.uk" aria-describedby="form-privacy">
             <div class="field">
               <label for="cf-name">Name</label>
               <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="100" aria-describedby="cf-name-err">
@@ -158,12 +160,16 @@
               <label for="cf-website">Leave this empty</label>
               <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
             </div>
+            <div class="turnstile" id="cf-turnstile"></div>
             <button type="submit">Send message</button>
             <p class="form-status" role="status" aria-live="polite"></p>
+            <p class="form-fallback" hidden><button type="button" class="link-button">Send it with your email app instead</button></p>
             <p class="privacy-note" id="form-privacy">
-              Privacy: what you send is used only to reply to you. This site sets no
-              cookies and has no tracking or analytics. For now, sending opens your own
-              email app with the message ready to go.
+              Privacy: what you send is used only to reply to you. It goes straight to our
+              Microsoft 365 mailbox and isn’t stored on this website. To keep out spam, the form
+              uses <a href="https://www.cloudflare.com/turnstile-privacy-policy/">Cloudflare Turnstile</a>,
+              which loads when you start filling it in and checks you’re a person, not for tracking
+              or advertising. This site sets no cookies of its own and has no analytics.
             </p>
           </form>
         </div>

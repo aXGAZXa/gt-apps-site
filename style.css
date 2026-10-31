@@ -170,6 +170,16 @@ button[disabled] { opacity: .6; cursor: progress; }
 .form-status { margin: 0; font-size: .95rem; }
 .form-status:empty { display: none; }
 .privacy-note { margin: 0; color: var(--muted); font-size: .85rem; line-height: 1.6; }
+.privacy-note a { color: var(--muted); }
+.privacy-note a:hover { color: var(--white); }
+.turnstile:empty { display: none; }
+.form-fallback { margin: 0; }
+.link-button {
+  justify-self: start; min-height: 0; padding: 0; border: 0; border-radius: 0; background: none;
+  color: var(--white); font-weight: 500; font-size: .95rem; letter-spacing: 0; text-transform: none;
+  text-decoration: underline; text-underline-offset: .2em; cursor: pointer;
+}
+.link-button:hover { background: none; color: var(--text); }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--rule); color: var(--muted); font-size: .85rem; }

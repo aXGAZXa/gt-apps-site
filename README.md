@@ -52,12 +52,13 @@ The store listings and ad networks link to these, so never move or rename them:
 
 ## Contact form
 
-The form on the home page validates in the browser. While its `data-endpoint`
-is empty it opens the visitor's own email app (mailto) addressed to
-enquiries@ (or support@ for app support). To switch on direct sending, set
-`data-endpoint` to the approved endpoint and add that origin to the page's
-Content-Security-Policy (`connect-src`, plus Turnstile's script and frame if
-used). See `assets/js/contact.js`.
+The form on the home page validates in the browser, then posts to the GT-Apps
+Worker at `https://forms.gt-apps.co.uk/contact` (code in `_worker/`) after a
+Cloudflare Turnstile check; the Worker emails support@ (app support) or
+enquiries@ (everything else) through Microsoft 365. If the Worker or Turnstile
+fails, or `data-endpoint` is emptied, the form offers the visitor's own email
+app (mailto) instead. How it works, deploys and is tested:
+`_docs/contact-form-worker.md`.
 
 ## Brand
 

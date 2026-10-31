@@ -1,7 +1,9 @@
 # Contact form: how it should send (proposal, 31 Oct 2026)
 
-Status: **proposal, awaiting Gaz's decision.** Nothing has been created: no
-accounts, Workers, app registrations, secrets or mail permissions.
+Status: **decided 31 Oct 2026: option A** (Gaz), with the mailto fallback
+kept. What was built and how to run it: `contact-form-worker.md`; the
+Microsoft 365 steps: `contact-form-m365-setup.md`. The rest of this note is the
+original proposal, kept as written.
 
 What's built now: the form (name, email, subject, message, a hidden honeypot
 field), validation in the browser, and a mailto fallback that works today. It
