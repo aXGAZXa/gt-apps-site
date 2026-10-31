@@ -1,0 +1,3 @@
+# Shell scripts and their manifests must keep LF, or bash misreads them on Windows.
+*.sh text eol=lf
+_tools/*.txt text eol=lf

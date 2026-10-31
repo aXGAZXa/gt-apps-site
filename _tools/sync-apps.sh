@@ -14,6 +14,7 @@ for arg in "$@"; do want["${arg%%=*}"]="$( [[ $arg == *=* ]] && echo "${arg#*=}"
 
 found=0
 while read -r slug repo dir; do
+  dir="${dir%$'\r'}"  # tolerate a CRLF manifest
   [[ -z "${slug:-}" || $slug == \#* ]] && continue
   if (( $# )) && [[ -z "${want[$slug]+x}" ]]; then continue; fi
   found=1
