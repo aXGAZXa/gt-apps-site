@@ -3,47 +3,181 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GT Apps</title>
-  <meta name="description" content="GT Apps — small, friendly apps from an independent UK developer.">
+  <title>GT-Apps · Independent studio for mobile games and apps</title>
+  <meta name="description" content="GT-Apps is an independent studio making mobile games and apps.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#1c1d1f">
   <link rel="icon" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
-  <style>
-    .apps { display: grid; gap: 16px; margin-top: 24px; }
-    .app {
-      display: flex; gap: 16px; align-items: center;
-      text-decoration: none; color: inherit;
-      background: var(--paper-soft); border: 1px solid var(--rule);
-      border-radius: 16px; padding: 16px;
-    }
-    .app:hover { border-color: var(--blue-glow); }
-    .app img { width: 72px; height: 72px; border-radius: 16px; flex: none; }
-    .app div { min-width: 0; }
-    .app h3 { margin: 0 0 2px; font-size: 1.15rem; }
-    .app p { margin: 0; color: var(--ink-soft); }
-  </style>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GT-Apps">
+  <meta property="og:title" content="GT-Apps">
+  <meta property="og:description" content="An independent studio making mobile games and apps.">
+  <meta property="og:url" content="https://gt-apps.co.uk/">
+  <meta property="og:image" content="https://gt-apps.co.uk/assets/img/og-gt-apps.jpg">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-  <header class="hero">
-    <h1>GT Apps</h1>
-    <p>Small, friendly apps from an independent UK developer.</p>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="wordmark" href="./" aria-label="GT-Apps, home"><b>GT-</b><span>Apps</span></a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#apps">Apps</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h2>Apps</h2>
-    <div class="apps">
-      <a class="app" href="who-goes-first/index.html">
-        <img src="who-goes-first/icon.png" alt="">
-        <div>
-          <h3>Who Goes First?</h3>
-          <p>A games night spinner that settles who goes first.</p>
-        </div>
-      </a>
+  <main id="main">
+    <div class="hero wrap">
+      <h1 class="wordmark"><b>GT-</b><span>Apps</span></h1>
+      <p>An independent studio making mobile games and apps.</p>
     </div>
 
-    <h2>Contact</h2>
-    <p><a href="mailto:hello@gt-apps.co.uk">hello@gt-apps.co.uk</a></p>
+    <section id="apps" aria-labelledby="apps-title">
+      <div class="wrap">
+        <p class="eyebrow">Apps</p>
+        <h2 id="apps-title">Made by GT-Apps</h2>
+
+        <div class="apps">
+          <article class="app" aria-labelledby="wgf-title">
+            <div class="app-head">
+              <img class="app-icon" src="who-goes-first/icon.png" alt="" width="72" height="72">
+              <div>
+                <h3 id="wgf-title">Who Goes First?</h3>
+                <p>Games night turn picker</p>
+                <span class="status">Coming soon</span>
+              </div>
+            </div>
+            <p>
+              Every board game starts with the same argument. Tap the screen, watch
+              the wheel spin, and find out who’s going first, fair and square.
+              Regulars are remembered, guests are added in a tap, and names and
+              photos never leave your phone. Coming soon to the App Store and Google Play.
+            </p>
+            <!-- Store links go in this list once the listings are live:
+                 App Store   https://apps.apple.com/gb/app/id6818905556
+                 Google Play https://play.google.com/store/apps/details?id=com.gtapp.whogoesfirst -->
+            <ul class="links" aria-label="Who Goes First? pages">
+              <li><a href="who-goes-first/">About the app</a></li>
+              <li><a href="who-goes-first/support.html">Support</a></li>
+              <li><a href="who-goes-first/privacy.html">Privacy policy</a></li>
+            </ul>
+          </article>
+
+          <article class="app" aria-labelledby="pulse-title">
+            <div class="app-head">
+              <svg class="app-icon pulse-icon" viewBox="0 0 72 72" width="72" height="72" aria-hidden="true" focusable="false">
+                <circle class="ring" cx="36" cy="36" r="27" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+                <circle cx="36" cy="36" r="11" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+                <circle cx="36" cy="36" r="4" fill="#ffffff"/>
+              </svg>
+              <div>
+                <h3 id="pulse-title">Pulse</h3>
+                <p>A rhythm game</p>
+                <span class="status">Coming soon</span>
+              </div>
+            </div>
+            <p>
+              A rhythm game for iPhone and Android. Targets close in on the beat and
+              you tap on the moment; the better you play, the more the stage comes
+              alive with the music.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <p class="eyebrow">About</p>
+        <h2 id="about-title">A one-person studio</h2>
+        <p>
+          GT-Apps is a solo developer with a lifelong passion for mobile games and
+          gaming. Every game and app is designed, built and supported in-house.
+        </p>
+        <p>
+          The aim is simple: a small number of carefully made things, released when
+          they are ready, that are a pleasure to pick up and easy to come back to.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Get in touch</h2>
+
+        <div class="contact-grid">
+          <div class="contact-direct">
+            <p>For business, press and general enquiries, use the form or email us directly. For help with one of our apps, please email support and say which app and phone you’re using.</p>
+            <dl>
+              <dt>Enquiries</dt>
+              <dd><a href="mailto:enquiries@gt-apps.co.uk">enquiries@gt-apps.co.uk</a></dd>
+              <dt>App support</dt>
+              <dd><a href="mailto:support@gt-apps.co.uk">support@gt-apps.co.uk</a></dd>
+            </dl>
+          </div>
+
+          <!-- data-endpoint stays empty until a sending service is approved;
+               while it's empty the form opens the visitor's email app (mailto). -->
+          <form id="contact-form" action="mailto:enquiries@gt-apps.co.uk" method="post" enctype="text/plain"
+                data-endpoint="" data-to="enquiries@gt-apps.co.uk" aria-describedby="form-privacy">
+            <div class="field">
+              <label for="cf-name">Name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="100" aria-describedby="cf-name-err">
+              <p class="error" id="cf-name-err"></p>
+            </div>
+            <div class="field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200" aria-describedby="cf-email-err">
+              <p class="error" id="cf-email-err"></p>
+            </div>
+            <div class="field">
+              <label for="cf-topic">Subject</label>
+              <select id="cf-topic" name="topic">
+                <option value="General enquiry" data-to="enquiries@gt-apps.co.uk">General enquiry</option>
+                <option value="Business or press" data-to="enquiries@gt-apps.co.uk">Business or press</option>
+                <option value="App support" data-to="support@gt-apps.co.uk">App support</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" name="message" required minlength="10" maxlength="4000" aria-describedby="cf-message-err"></textarea>
+              <p class="error" id="cf-message-err"></p>
+            </div>
+            <div class="hp" aria-hidden="true">
+              <label for="cf-website">Leave this empty</label>
+              <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <button type="submit">Send message</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+            <p class="privacy-note" id="form-privacy">
+              Privacy: what you send is used only to reply to you. This site sets no
+              cookies and has no tracking or analytics. For now, sending opens your own
+              email app with the message ready to go.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>GT Apps · United Kingdom</footer>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2026 GT-Apps Ltd</p>
+      <p><a href="mailto:enquiries@gt-apps.co.uk">enquiries@gt-apps.co.uk</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/contact.js" defer></script>
 </body>
 </html>
