@@ -63,7 +63,7 @@ into mailto only.
 | Turnstile site key (public) | `0x4AAAAAAFuPnLl-wGleRh63` (in `index.html`) |
 | Cloudflare API token | 1Password GT-Apps, "Cloudflare API token (Calder)", `credential` |
 | Turnstile secret | 1Password GT-Apps, "Cloudflare Turnstile: gt-apps.co.uk contact form", `credential`; Worker secret `TURNSTILE_SECRET` |
-| Graph app credentials | 1Password GT-Apps, "Microsoft Graph sender for website contact form": `tenant id`, `client id`, `credential` (client secret), `expires`; Worker secrets `GRAPH_TENANT_ID`, `GRAPH_CLIENT_ID`, `GRAPH_CLIENT_SECRET` |
+| Graph app credentials | 1Password GT-Apps, "Microsoft Graph sender for website contact form": `Tenant ID`, `Client ID`, `credential` (client secret); labels matched case-insensitively in any section; read with the desktop sign-in, not the service account; Worker secrets `GRAPH_TENANT_ID`, `GRAPH_CLIENT_ID`, `GRAPH_CLIENT_SECRET` |
 | M365 tenant | `gtappsltd.onmicrosoft.com`, tenant ID `46fe1449-f713-404c-b0bc-50d7d14677f6` |
 | Sender | shared mailbox `forms@gt-apps.co.uk` ("GT-Apps Website"), no licence, send-only |
 | Recipients | `support@` and `enquiries@` (aliases on gareth.taylor@) |
