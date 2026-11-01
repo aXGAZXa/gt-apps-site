@@ -19,6 +19,7 @@
   --muted: #a4a6aa;      /* secondary copy (7:1 on --charcoal) */
   --rule: #34363a;       /* hairlines and borders */
   --error: #f0b4b4;      /* field errors (monochrome-friendly, 9:1) */
+  --draft: #f2c46d;      /* placeholders still to fill in on draft legal pages */
   --font: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --measure: 62ch;
 }
@@ -181,12 +182,57 @@ button[disabled] { opacity: .6; cursor: progress; }
 }
 .link-button:hover { background: none; color: var(--text); }
 
+/* Legal pages (app privacy policies): long-form reading on the studio look */
+.legal { padding-block: clamp(2.5rem, 8vw, 5rem) clamp(3.5rem, 9vw, 6rem); border-top: 1px solid var(--rule); }
+.legal-head h1 { margin: 0; color: var(--white); font-size: clamp(2.1rem, 6vw, 3.1rem); font-weight: 300; letter-spacing: .01em; line-height: 1.15; }
+.legal-meta { margin: 1rem 0 0; color: var(--muted); font-size: .9rem; }
+.legal-meta span + span::before { content: "·"; margin: 0 .6rem; }
+.draft-banner {
+  max-width: var(--measure); margin: 2rem 0 0; padding: 1rem 1.25rem;
+  border: 1px dashed var(--draft); border-radius: 12px; color: var(--text); font-size: .95rem;
+}
+.draft-banner strong { color: var(--draft); }
+mark.placeholder {
+  color: var(--draft); background: color-mix(in srgb, var(--draft) 14%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--draft) 70%, transparent); border-radius: 6px;
+  padding: 0 .3em; box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+mark.placeholder a { color: var(--draft); }
+.toc { margin: 2.5rem 0 0; padding: 1.25rem 1.5rem; max-width: var(--measure);
+  background: color-mix(in srgb, var(--surface) 70%, transparent); border: 1px solid var(--rule); border-radius: 18px; }
+.toc .eyebrow { margin-bottom: .5rem; }
+.toc ol { margin: 0; padding-left: 1.6rem; columns: 2 16rem; column-gap: 2.5rem; font-size: .95rem; line-height: 1.45; }
+.toc li { break-inside: avoid; padding-block: .2rem; }
+.toc li:first-child { list-style: none; margin-left: -1.6rem; }  /* "The short version" is unnumbered */
+.toc a { color: var(--text); text-decoration: none; }
+.toc a:hover { color: var(--white); text-decoration: underline; }
+.legal-body { max-width: var(--measure); margin-top: 2.5rem; }
+.legal-body h2 { margin: 3rem 0 1rem; font-size: clamp(1.35rem, 3.2vw, 1.65rem); scroll-margin-top: 1.5rem; }
+.legal-body h3 { margin: 2rem 0 .5rem; font-size: 1.1rem; }
+.legal-body p, .legal-body li { max-width: none; }
+.legal-body p { margin: 0 0 1rem; }
+.legal-body ul { margin: 0 0 1rem; padding-left: 1.3rem; }
+.legal-body li { margin-bottom: .45rem; }
+.legal-body li::marker { color: var(--muted); }
+.legal-body strong { color: var(--white); font-weight: 600; }
+.legal-body #the-short-version + ul {
+  padding: 1.25rem 1.5rem 1.25rem 2.6rem; border: 1px solid var(--rule); border-radius: 18px;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+}
+.table-wrap { overflow-x: auto; margin: 0 0 1.25rem; border: 1px solid var(--rule); border-radius: 14px; }
+.legal-body table { width: 100%; border-collapse: collapse; font-size: .95rem; line-height: 1.55; }
+.legal-body th, .legal-body td { padding: .75rem 1rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); }
+.legal-body th { color: var(--muted); font-size: .72rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; background: color-mix(in srgb, var(--surface) 70%, transparent); }
+.legal-body tr:last-child td { border-bottom: 0; }
+.legal-body code { font-size: .9em; }
+
 /* Footer */
 .site-footer { border-top: 1px solid var(--rule); color: var(--muted); font-size: .85rem; }
 .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; padding-block: 2rem 2.5rem; }
 .site-footer p { margin: 0; }
 .site-footer a { color: var(--muted); }
 .site-footer a:hover { color: var(--white); }
+.footer-links { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
 
 @media (max-width: 30rem) {
   body { font-size: 1rem; }
@@ -194,6 +240,8 @@ button[disabled] { opacity: .6; cursor: progress; }
   .site-header nav ul { gap: 1rem; }
   .site-header nav a { font-size: .72rem; letter-spacing: .12em; }
   .app-icon { width: 60px; height: 60px; border-radius: 14px; }
+  .toc { padding: 1rem 1.15rem; }
+  .toc ol { font-size: .9rem; }
   button { justify-self: stretch; }
 }
 
