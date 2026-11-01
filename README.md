@@ -13,6 +13,7 @@ tracking.
 | `app-ads.txt` | the studio (ad networks read it from the developer's domain, for every app) | **this repo** |
 | `CNAME` | GitHub Pages setting for gt-apps.co.uk | this repo (don't remove it) |
 | `/who-goes-first/` | the Who Goes First? app | `games_night_spinner` repo, `site/who-goes-first/` |
+| `/pulse/privacy/` | Pulse's privacy policy, `F:\Pulse\docs\legal\privacy-policy.md` | **the Pulse repo**, then rebuild here (below) |
 
 Each app owns its own folder of pages (overview, privacy policy, support), kept
 next to its code so a release and its policy change together. Nothing is
@@ -47,8 +48,37 @@ The store listings and ad networks link to these, so never move or rename them:
 - `/who-goes-first/`, `/who-goes-first/index.html`
 - `/who-goes-first/privacy.html` (also built into the app as its privacy URL)
 - `/who-goes-first/support.html`
+- `/pulse/privacy/` (and `/pulse/privacy`, which redirects to it): Pulse's
+  privacy URL in the app, App Store Connect and the Play Console
 - `/favicon.png`, `/apple-touch-icon.png`, `/who-goes-first/icon.png`,
   `/who-goes-first/apple-touch-icon.png`
+
+## Pulse privacy policy
+
+`pulse/privacy/index.html` is generated, not hand-written. Pulse doesn't have
+its own `site/` folder yet, so instead of `sync-apps.sh` it is built from the
+policy's markdown:
+
+    python _tools/build-pulse-privacy.py [path to privacy-policy.md]
+
+It publishes only the public policy, from the second `# Pulse privacy policy`
+heading to the first `# Appendix` heading; Appendices A to C (store answers,
+internal issues) are never written out, and the script stops if it can't find
+them. Placeholders in `[square brackets]` stay visibly marked, with a "Draft"
+banner, until they are filled in the source; the script lists any that remain.
+It also flags any gt-apps.com address: that domain belongs to another company.
+
+Published as a marked draft on 1 Nov 2026 (Gaz's decision, option B): the
+page is live with its placeholders showing and a "Draft: this policy is not
+final" banner. It carries `<meta name="robots" content="noindex">`, and nothing
+on the site links to it (not the home page, not the footer; the site has no
+sitemap), so only the app's link reaches it. Keep it that way until Gaz says
+otherwise.
+
+To finalise: fill every placeholder in the policy (company number, registered
+office, ICO number, privacy email, email provider, effective date), commit it in
+the Pulse repo, rebuild here until the script reports no placeholders, check
+the page, then commit and push `main`. Pushing `main` is what publishes.
 
 ## Contact form
 
