@@ -68,7 +68,14 @@ them. Placeholders in `[square brackets]` stay visibly marked, with a "Draft"
 banner, until they are filled in the source; the script lists any that remain.
 It also flags any gt-apps.com address: that domain belongs to another company.
 
-To publish: fill every placeholder in the policy (company number, registered
+Published as a marked draft on 1 Nov 2026 (Gaz's decision, option B): the
+page is live with its placeholders showing and a "Draft: this policy is not
+final" banner. It carries `<meta name="robots" content="noindex">`, and nothing
+on the site links to it (not the home page, not the footer; the site has no
+sitemap), so only the app's link reaches it. Keep it that way until Gaz says
+otherwise.
+
+To finalise: fill every placeholder in the policy (company number, registered
 office, ICO number, privacy email, email provider, effective date), commit it in
 the Pulse repo, rebuild here until the script reports no placeholders, check
 the page, then commit and push `main`. Pushing `main` is what publishes.

@@ -179,6 +179,7 @@ PAGE = """<!doctype html>
   <meta name="description" content="Privacy policy for Pulse, the rhythm game for iPhone and Android by GT-Apps. Your progress stays on your phone: no accounts, no adverts, no tracking.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; font-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="noindex">
   <meta name="theme-color" content="#1c1d1f">
   <link rel="canonical" href="{canonical}">
   <link rel="icon" href="../../favicon.png">
@@ -237,8 +238,8 @@ PAGE = """<!doctype html>
 """
 
 BANNER = """      <div class="draft-banner" role="note">
-        <strong>Draft.</strong> Items marked <mark class="placeholder">[like this]</mark> are still to be
-        filled in. This page must not be published until they are.
+        <strong>Draft:</strong> this policy is not final. Company and ICO registration details will be
+        added before release. Items marked <mark class="placeholder">[like this]</mark> are still to come.
       </div>
 """
 
