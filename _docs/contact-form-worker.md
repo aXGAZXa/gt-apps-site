@@ -5,18 +5,38 @@ the home page posts to a Cloudflare Worker, which checks it and sends one email
 through Microsoft Graph as a send-only mailbox. If anything fails, the form
 offers the visitor their own email app (mailto) instead.
 
-## Status (31 Oct 2026)
+## Status (1 Nov 2026)
 
 | Part | State |
 |---|---|
-| Worker `gt-apps-forms` on `https://forms.gt-apps.co.uk` | **deployed**, live checks pass (below) |
-| Turnstile widget (managed, gt-apps.co.uk + www) | **created**; secret on the Worker and in 1Password |
-| Graph sender (Entra app, Exchange scoping, client secret) | **waiting for Gaz**: `contact-form-m365-setup.md` |
-| Site form wired to the Worker | **done on branch `contact-worker`, not published** |
-| End-to-end test (real Turnstile, real Graph send) | to do after the Graph step |
+| Worker `gt-apps-forms` on `https://forms.gt-apps.co.uk` | **deployed**, `/health` answers `{"ok":true,"mail":true}` |
+| Turnstile widget (managed, gt-apps.co.uk + www) | **working** (Gaz's test on 1 Nov passed it) |
+| Graph secrets on the Worker | **set, but the tenant is wrong**: see below |
+| Graph sender scoping (Exchange RBAC for Applications) | **not confirmed**: `scope-sender.ps1` reports it with one sign-in |
+| Site form wired to the Worker | **live** on gt-apps.co.uk |
+| End-to-end test (real Turnstile, real Graph send) | to do after the steps below |
 
-Until the Graph secrets are set the Worker answers `503 not_configured` after
-the Turnstile check, and `/health` shows `"mail": false`.
+**Why the form answered 502 (found 1 Nov 2026, about 01:10).** The 1Password item's `Tenant ID` field holds the
+*client* id (`27736171-...`), so the Worker's `GRAPH_TENANT_ID` is the client id. Microsoft answers the token request
+with `AADSTS90002: Tenant ... not found`, `sendMail` is never reached, and the Worker answers `502 send_failed`
+after Turnstile passes. With the right tenant (`46fe1449-f713-404c-b0bc-50d7d14677f6`) the same client id and secret
+get a token (200, no `roles`, as the RBAC route expects), so the secret itself is good.
+`set-graph-secrets.sh` now refuses a tenant that isn't GT Apps' and asks for a token before it writes anything.
+
+**To finish (Gaz, Windows PowerShell):**
+
+```powershell
+cd C:\Users\gaz70\source\VSCode\gt-apps-site
+op item edit "Microsoft Graph sender for website contact form" --vault GT-Apps "Tenant ID=46fe1449-f713-404c-b0bc-50d7d14677f6"
+powershell -ExecutionPolicy Bypass -File _worker\m365\scope-sender.ps1 -FixDelegation
+& "C:\Program Files\Git\bin\bash.exe" _worker/set-graph-secrets.sh
+```
+
+The third line is the one Microsoft sign-in (as gareth.taylor@); it skips what is already done and ends with
+`NEXT: done` (forms@ `InScope = True`, gareth.taylor@ `InScope = False`), or says what to do next
+(`contact-form-m365-setup.md` step 3). The last prints `Graph token: ok (no mail sent)`, three `set ...` lines and
+`{"ok":true,"mail":true}`. Then one send from the site; a new role assignment can take 30 minutes to 2 hours to
+reach Graph, so a first send that still fails just needs a wait.
 
 ## How it works
 
